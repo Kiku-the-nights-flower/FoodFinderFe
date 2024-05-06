@@ -1,0 +1,45 @@
+.RecipeDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.RecipeDetail h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.RecipeDetail img {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.RecipeDetail p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.RecipeDetail ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.RecipeDetail ul li {
+  margin-bottom: 10px;
+}
+
+.RecipeDetail button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

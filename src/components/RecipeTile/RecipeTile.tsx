@@ -2,10 +2,10 @@ import React from 'react';
 import Image from "./Image";
 import styles from './RecipeTile.module.scss';
 import RatingDisplay from "../RatingDisplay/RatingDisplay";
-import {IRecipe} from "../../Interfaces/Recipe";
+import {IRecipePreview} from "../../Interfaces/RecipePreview";
 
 export interface RecipeTileProps {
-    recipe: IRecipe;
+    recipe: IRecipePreview;
 }
 
 function RecipeTile(props: RecipeTileProps) {

@@ -3,14 +3,14 @@ import styles from './Container.module.scss';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import RecipeTile from "../RecipeTile/RecipeTile";
 import RatingDisplay from "../RatingDisplay/RatingDisplay";
-import {Recipe} from "../../Interfaces/Recipe";
+import {RecipePreview} from "../../Interfaces/RecipePreview";
 import RecipeIndex from "../../sites/RecipeIndex/RecipeIndex";
 
 interface ContainerProps {
 }
 
 export function Container(props: ContainerProps) {
-    const temp: Recipe = {
+    const temp: RecipePreview = {
         image: "https://placehold.co/600x400",
         rating: 4,
         ratingAmount: 10,

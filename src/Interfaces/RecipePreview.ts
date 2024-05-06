@@ -1,12 +1,15 @@
 export interface IRecipePreview {
-        image?: string;
-        rating: number;
-        ratingAmount: number;
-        name: string;
-        description?: string;
+    recipeId: number;
+
+    image?: string;
+    rating: number;
+    ratingAmount: number;
+    name: string;
+    description?: string;
 }
 
 export class RecipePreview implements IRecipePreview {
+    recipeId: number;
     image?: string;
     rating: number;
     ratingAmount: number;
@@ -14,6 +17,7 @@ export class RecipePreview implements IRecipePreview {
     description?: string;
 
     constructor(recipe: IRecipePreview) {
+        this.recipeId = recipe.recipeId;
         this.image = recipe.image;
         this.rating = recipe.rating;
         this.ratingAmount = recipe.ratingAmount;

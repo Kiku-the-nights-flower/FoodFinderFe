@@ -1,17 +1,8 @@
-.Container {}
+.Container {
+  background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
 
-.temp {
-    width: 100%;
-    gap: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-.Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
 }

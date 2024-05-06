@@ -1,3 +1,4 @@
+/* reset css */
 *, *:before, *:after{
   box-sizing: border-box;
 }
@@ -39,4 +40,15 @@ table{
 input{
   -webkit-appearance: none;
   border-radius: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* End reset region */
+
+html {
+  background-color: #dadada;
 }

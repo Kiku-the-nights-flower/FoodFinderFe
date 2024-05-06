@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.scss';
-import {Container} from "../components/Container/Container";
+import {Layout} from "../components/Layout/Layout";
+import CurrentUserProvider from "../providers/CurrentUserContext";
 
 function App() {
   return (
-    <Container>
-
-    </Container>
+      <CurrentUserProvider>
+        <Layout/>
+      </CurrentUserProvider>
   );
 }
 

@@ -1,5 +1,6 @@
 import {RecipePreview} from "../Interfaces/RecipePreview";
 import {Recipe} from "../Interfaces/Recipe";
+import {IUser} from "../Interfaces/User";
 
 const recipesPreviews: RecipePreview[] = [
     {
@@ -173,6 +174,13 @@ const recipes: Recipe[] = [
     }
     ]
 
+const users: IUser[] = [
+    {id: -1, username: "Guest"},
+    {id: 1, username: "Alice"},
+    {id: 2, username: "Bob"},
+    {id: 3, username: "Charlie"}
+]
+
 export function getRecipePreviews() {
     return new Promise<RecipePreview[]>((resolve, reject) => {
         resolve(recipesPreviews);
@@ -239,5 +247,28 @@ export function searchRecipes(query: string) {
                 recipe.ingredients.some((ingredient) => ingredient.toLowerCase().includes(query.toLowerCase()));
         });
         resolve(results);
+    });
+}
+
+export async function searchRecipePreviews(query: string) {
+    const recipes = await searchRecipes(query);
+    const ids = recipes.map((recipe) => recipe.id);
+    return recipesPreviews.filter((recipe) => ids.includes(recipe.recipeId));
+}
+
+export function getUser(id: number) {
+    return new Promise<IUser>((resolve, reject) => {
+        const user = users.find((user) => user.id === id);
+        if (user) {
+            resolve(user);
+        } else {
+            reject("User not found");
+        }
+    });
+}
+
+export function getUsers() {
+    return new Promise<IUser[]>(resolve => {
+        resolve(users);
     });
 }

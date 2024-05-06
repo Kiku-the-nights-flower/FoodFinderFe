@@ -10,7 +10,7 @@ export interface IRecipe {
 }
 
 export class Recipe implements IRecipe {
-id: number;
+    id: number;
     name: string;
     ownerId: number;
     ingredients: string[];

@@ -30,7 +30,7 @@ const recipesPreviews: RecipePreview[] = [
     {
         recipeId: 4,
         image: "https://placehold.co/600x400",
-        rating: 4,
+        rating: 4.3,
         ratingAmount: 12,
         name: "Creamy Mushroom Risotto",
         description: "This creamy mushroom risotto recipe is a rich and flavorful dish that is perfect for a special occasion or a cozy night in. The combination of Arborio rice, white wine, mushrooms, and Parmesan cheese creates a luxurious and satisfying meal that will impress your guests."

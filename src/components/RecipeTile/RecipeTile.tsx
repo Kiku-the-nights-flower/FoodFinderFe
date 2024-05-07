@@ -15,9 +15,7 @@ function RecipeTile(props: RecipeTileProps) {
             <div className={styles.eyecandy}>
                 <Image src="https://placehold.co/600x400" alt="Recipe Image"/>
                 <div className={styles.ratings}>
-                    <div>
-                        <RatingDisplay starAverage={props.recipe.rating}></RatingDisplay>
-                    </div>
+                    <RatingDisplay starAverage={props.recipe.rating}></RatingDisplay>
                     <div>{props.recipe.ratingAmount}</div>
                 </div>
             </div>

@@ -19,19 +19,14 @@
 
 .RecipeTile h3 {
   margin-top: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-}
-
-//make the h3 smaller on smaller screens
-@media (max-width: 768px) {
-  .RecipeTile h3 {
-    font-size: 1.2rem;
-  }
+  max-width: max-content;
 }
 
 .RecipeTile p {
+  padding-bottom: 0.15rem;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -44,15 +39,8 @@
 
 .RecipeTile img {
   width: 100%;
-  height: 10rem;
   border-radius: 10px;
-}
-
-//lower the height on smaller screens
-@media (max-width: 768px) {
-  .RecipeTile img {
-    height: 6rem;
-  }
+  margin-bottom: 0.5rem;
 }
 
 .RecipeTile .info {
@@ -61,13 +49,6 @@
   align-items: center;
   width: 60%;
   margin-left: 2rem;
-}
-
-//lower the margin on smaller screens
-@media (max-width: 768px) {
-  .RecipeTile .info {
-    margin-left: 1rem;
-  }
 }
 
 .RecipeTile .info span {
@@ -85,4 +66,35 @@
 
 .RecipeTile .eyecandy {
   margin-right: 0.5rem;
+  width: 40%;
+}
+
+/* responsivity region */
+
+//lower the height on smaller screens
+@media (max-width: 500px) {
+  .RecipeTile {
+    width: 100%;
+    height: 10rem;
+  }
+
+  .RecipeTile img {
+    height: 6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .RecipeTile .info {
+    margin-left: 1rem;
+  }
+
+  .RecipeTile h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .RecipeTile p {
+    font-size: 0.8rem;
+    padding-bottom: 0.12rem;
+    -webkit-line-clamp: 4;
+  }
 }

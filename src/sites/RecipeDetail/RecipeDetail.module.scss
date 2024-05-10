@@ -5,9 +5,21 @@
   padding: 20px;
 }
 
+.IntroContainers {
+  display: flex;
+
+  div {
+    width: 50%;
+  }
+}
+
 .RecipeDetail h1 {
   font-size: 2em;
   margin-bottom: 20px;
+}
+
+.RecipeDetail h2 {
+  margin-bottom: 0.3rem;
 }
 
 .RecipeDetail img {
@@ -27,7 +39,7 @@
   margin-bottom: 20px;
 }
 
-.RecipeDetail ul li {
+.RecipeDetail li {
   margin-bottom: 10px;
 }
 

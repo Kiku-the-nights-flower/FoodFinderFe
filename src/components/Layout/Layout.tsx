@@ -7,11 +7,9 @@ import {CurrentUserContext} from "../../providers/CurrentUserContext";
 import Library from "../../sites/Library/Library";
 import {getUsers} from "../../mockApi/MockApi";
 import {IUser} from "../../Interfaces/User";
+import RecipeEdit from "../../sites/RecipeEdit/RecipeEdit";
 
-interface LayoutProps {
-}
-
-export function Layout(props: LayoutProps) {
+export function Layout() {
     const userContext = useContext(CurrentUserContext);
     const [users, setUsers] = React.useState<IUser[]>([]);
 
@@ -27,24 +25,26 @@ export function Layout(props: LayoutProps) {
 
     return (
         <Router>
-        <div className={styles.Layout}>
-            <nav className={styles.Header}>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    {userContext.user.id !== -1 ? <li><Link to="/library">Your library</Link></li> : null}
-                </ul>
-                <select onChange={handleUserChange}>
-                    {users ? users.map((user) => {
-                        return <option key={user.id} value={user.id}>{user.username}</option>
-                    }) : null}
-                </select>
-            </nav>
+            <div className={styles.Layout}>
+                <nav className={styles.Header}>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        {userContext.user.id !== -1 ? <li><Link to="/library">Your library</Link></li> : null}
+                    </ul>
+                    <select onChange={handleUserChange}>
+                        {users ? users.map((user) => {
+                            return <option key={user.id} value={user.id}>{user.username}</option>
+                        }) : null}
+                    </select>
+                </nav>
                 <Routes>
                     <Route path={"/"} Component={RecipeIndex}/>
+                    <Route path={"/recipes"}/>
                     <Route path={"/recipes/:id"} Component={RecipeDetail}/>
+                    <Route path={"/recipes/:id/edit"} Component={RecipeEdit}/>
                     <Route path={"/library"} Component={Library}/>
                 </Routes>
-        </div>
+            </div>
         </Router>
     )
 }

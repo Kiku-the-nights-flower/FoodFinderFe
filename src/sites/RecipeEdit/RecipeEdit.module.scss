@@ -1,3 +1,91 @@
-textarea {
-  resize: none;
+.RecipeEdit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.recipeFieldContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .recipeFieldContainer {
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 100%;
+    }
+  }
+}
+
+.recipeFieldContainer h2 {
+  margin-bottom: 1rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.RecipeEdit select {
+  appearance: none;
+  background: white;
+}
+
+.RecipeEdit textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.flexGrow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: fit-content;
+}
+
+.buttonsContainer button {
+  margin-left: 1rem;
+
+    &:first-child {
+        margin-left: 0;
+    }
+  //style so that the button appears as a part of the app
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.saveButton {
+  background-color: #4CAF50;
+}
+
+.cancelButton {
+  background-color: #f44336;
 }

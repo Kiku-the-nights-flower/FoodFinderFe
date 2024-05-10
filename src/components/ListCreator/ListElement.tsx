@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import styles from "./ListElement.module.scss";
 
 interface ListElementProps {
     input: string;
@@ -19,9 +20,9 @@ function ListElement({input, onDelete, onChange}: ListElementProps) {
     };
 
     return (
-        <div>
-            <input type="text" value={value} onChange={handleInputChange}/>
-            <button onClick={onDelete}>Delete</button>
+        <div className={styles.ListElement}>
+            <input className={styles.input} type="text" value={value} onChange={handleInputChange}/>
+            <button className={styles.deleteButton} onClick={onDelete}>Delete</button>
         </div>
     );
 }

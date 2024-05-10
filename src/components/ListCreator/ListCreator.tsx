@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ListElement from "./ListElement";
+import styles from "./ListCreator.module.scss";
 
 export interface ListCreatorProps {
     dtoIn?: string[];
@@ -30,7 +31,7 @@ function ListCreator({dtoIn, elementUpdatedFn}: ListCreatorProps) {
     };
 
     return (
-        <div>
+        <div className={styles.ListCreator}>
             {elements.map((element, index) => (
                 index !== elements.length - 1 ?
                     <ListElement key={index} input={element} onDelete={() => handleDelete(index)}

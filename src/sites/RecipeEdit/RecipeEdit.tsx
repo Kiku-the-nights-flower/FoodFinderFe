@@ -45,45 +45,52 @@ function RecipeEdit() {
     useEffect(() => {
         console.log(recipe);
     }, [recipe]);
-
     return (
         <div className={styles.RecipeEdit}>
             <Container>
                 <div className={styles.recipeFieldContainer}>
-                    <h2>Recipe name:</h2>
-                    <input value={recipe.name} onChange={e=> handleChange(e.target.value, "name")} type={"text"}/>
-                    <h2>Recipe cuisine</h2>
-                    <select onChange={(e) => handleChange(e.target.value, "cuisine_type")}>
-                        <option value={"American"}>American</option>
-                        <option value={"Chinese"}>Chinese</option>
-                        <option value={"French"}>French</option>
-                        <option value={"Indian"}>Indian</option>
-                        <option value={"Italian"}>Italian</option>
-                        <option value={"Japanese"}>Japanese</option>
-                        <option value={"Mexican"}>Mexican</option>
-                        <option value={"Thai"}>Thai</option>
-                    </select>
+                    <div>
+                        <h2>Recipe name:</h2>
+                        <input className={styles.inputField} value={recipe.name} onChange={e => handleChange(e.target.value, "name")} type={"text"}/>
+                        <h2>Recipe cuisine</h2>
+                        <select className={styles.inputField} onChange={(e) => handleChange(e.target.value, "cuisine_type")}>
+                            <option value={"American"}>American</option>
+                            <option value={"Chinese"}>Chinese</option>
+                            <option value={"French"}>French</option>
+                            <option value={"Indian"}>Indian</option>
+                            <option value={"Italian"}>Italian</option>
+                            <option value={"Japanese"}>Japanese</option>
+                            <option value={"Mexican"}>Mexican</option>
+                            <option value={"Thai"}>Thai</option>
+                        </select>
+                        <h2>Cook time</h2>
+                        <input className={styles.inputField} value={recipe.cook_time} onChange={e => handleChange(e.target.value, "cook_time")}
+                               type={"number"}/>
+                        <h2>Description:</h2>
+                        <textarea className={styles.inputField} key={recipe.id} value={recipe.description} cols={30} rows={10}
+                                  draggable={"false"}></textarea>
+                    </div>
+                    <div>
+                        <h2>Ingredients</h2>
+                        <ListCreator key={recipe.id} dtoIn={recipe.ingredients}
+                                     elementUpdatedFn={e => handleChange(e, "ingredients")}/>
+                    </div>
                 </div>
-                <div className={styles.recipeFieldContainer}>
-                    <h2>Description:</h2>
-                    <textarea key={recipe.id} value={recipe.description} cols={30} rows={10} draggable={"false"}></textarea>
-                </div>
-                <div className={styles.recipeFieldContainer}>
-                    <h2>Ingredients</h2>
-                    <ListCreator key={recipe.id} dtoIn={recipe.ingredients} elementUpdatedFn={e=> handleChange(e, "ingredients")}/>
-                </div>
-                <div className={styles.recipeFieldContainer}>
-                    <h2>Steps</h2>
-                    <ListCreator key={recipe.id} dtoIn={recipe.steps} elementUpdatedFn={e=> handleChange(e, "steps")}/>
-                </div>
-                <div className={styles.recipeFieldContainer}>
-                    <h2>Cook time</h2>
-                    <input value={recipe.cook_time} onChange={e=> handleChange(e.target.value, "cook_time")} type={"number"}/>
-                </div>
-
-
-                <button onClick={() => console.log(recipe)}>Log button</button>
             </Container>
+            <Container>
+                <div className={styles.stepsContainer}>
+                    <h2>Steps</h2>
+                    <ListCreator key={recipe.id} dtoIn={recipe.steps} elementUpdatedFn={e => handleChange(e, "steps")}/>
+                </div>
+            </Container>
+            <div className={styles.flexGrow}>
+                <div className={styles.buttonsContainer}>
+                    <Container>
+                        <button className={styles.saveButton}>Save</button>
+                        <button className={styles.cancelButton}>Cancel</button>
+                    </Container>
+                </div>
+            </div>
         </div>
     )
 }

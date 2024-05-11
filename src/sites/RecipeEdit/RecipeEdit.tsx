@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {getRecipe} from "../../mockApi/MockApi";
+import {getRecipe, updateRecipe} from "../../mockApi/MockApi";
 import {Recipe} from "../../Interfaces/Recipe";
 import {Link, useParams} from "react-router-dom";
 import styles from './RecipeEdit.module.scss';
@@ -86,7 +86,9 @@ function RecipeEdit() {
             <div className={styles.flexGrow}>
                 <div className={styles.buttonsContainer}>
                     <Container>
-                        <Link to={"/"} className={styles.saveButton + " " + styles.button}>Save</Link>
+                        <Link to={"/"}>
+                            <button onClick={() => updateRecipe(recipe)} className={styles.saveButton + " " + styles.button}>Save</button>
+                        </Link>
                         <Link to={"/"} className={styles.cancelButton + " " + styles.button}>Cancel</Link>
                     </Container>
                 </div>

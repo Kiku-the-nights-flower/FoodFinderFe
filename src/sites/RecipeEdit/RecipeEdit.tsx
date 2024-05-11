@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {getRecipe, updateRecipe} from "../../mockApi/MockApi";
-import {Recipe} from "../../Interfaces/Recipe";
+import {IRecipe} from "../../Interfaces/Recipe";
 import {Link, useParams} from "react-router-dom";
 import styles from './RecipeEdit.module.scss';
 import Container from "../../components/Container/Container";
@@ -10,7 +10,8 @@ import {CurrentUserContext} from "../../providers/CurrentUserContext";
 function RecipeEdit() {
     const recipeId = useParams().id;
     const userContext = useContext(CurrentUserContext);
-    const [recipe, setRecipe] = useState<Recipe>({
+    const [recipe, setRecipe] = useState<IRecipe>({
+        rating: 0, ratings: [],
         id: -1,
         name: "",
         ownerId: userContext.user.id,
@@ -35,7 +36,7 @@ function RecipeEdit() {
             }
         }
         fetchRecipe();
-    },[])
+    }, [])
 
     const handleChange = (value: any, key: string) => {
         const newRecipe = {...recipe, [key]: value};
@@ -51,9 +52,11 @@ function RecipeEdit() {
                 <div className={styles.recipeFieldContainer}>
                     <div>
                         <h2>Recipe name:</h2>
-                        <input className={styles.inputField} value={recipe.name} onChange={e => handleChange(e.target.value, "name")} type={"text"}/>
+                        <input className={styles.inputField} value={recipe.name}
+                               onChange={e => handleChange(e.target.value, "name")} type={"text"}/>
                         <h2>Recipe cuisine</h2>
-                        <select className={styles.inputField} onChange={(e) => handleChange(e.target.value, "cuisine_type")}>
+                        <select className={styles.inputField}
+                                onChange={(e) => handleChange(e.target.value, "cuisine_type")}>
                             <option value={"American"}>American</option>
                             <option value={"Chinese"}>Chinese</option>
                             <option value={"French"}>French</option>
@@ -64,10 +67,12 @@ function RecipeEdit() {
                             <option value={"Thai"}>Thai</option>
                         </select>
                         <h2>Cook time</h2>
-                        <input className={styles.inputField} value={recipe.cook_time} onChange={e => handleChange(e.target.value, "cook_time")}
+                        <input className={styles.inputField} value={recipe.cook_time}
+                               onChange={e => handleChange(e.target.value, "cook_time")}
                                type={"number"}/>
                         <h2>Description:</h2>
-                        <textarea className={styles.inputField} key={recipe.id} value={recipe.description} cols={30} rows={10}
+                        <textarea className={styles.inputField} key={recipe.id} value={recipe.description} cols={30}
+                                  rows={10}
                                   draggable={"false"}></textarea>
                     </div>
                     <div>
@@ -87,7 +92,9 @@ function RecipeEdit() {
                 <div className={styles.buttonsContainer}>
                     <Container>
                         <Link to={"/"}>
-                            <button onClick={() => updateRecipe(recipe)} className={styles.saveButton + " " + styles.button}>Save</button>
+                            <button onClick={() => updateRecipe(recipe)}
+                                    className={styles.saveButton + " " + styles.button}>Save
+                            </button>
                         </Link>
                         <Link to={"/"} className={styles.cancelButton + " " + styles.button}>Cancel</Link>
                     </Container>

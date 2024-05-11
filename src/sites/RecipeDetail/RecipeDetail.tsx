@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
-import {Recipe} from "../../Interfaces/Recipe";
+import {IRecipe} from "../../Interfaces/Recipe";
 import {getRecipe} from "../../mockApi/MockApi";
 import styles from './RecipeDetail.module.scss';
 import Container from "../../components/Container/Container";
@@ -10,7 +10,7 @@ import {CurrentUserContext} from "../../providers/CurrentUserContext";
 function RecipeDetail() {
     const recipeId = useParams().id;
     const usercontext = useContext(CurrentUserContext).user;
-    const [recipe, setRecipe] = useState<Recipe>();
+    const [recipe, setRecipe] = useState<IRecipe>();
 
     useEffect(() => {
         const fetchRecipe = async () => {

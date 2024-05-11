@@ -1,59 +1,19 @@
 import {RecipePreview} from "../Interfaces/RecipePreview";
-import {Recipe} from "../Interfaces/Recipe";
+import {IRecipe, Recipe} from "../Interfaces/Recipe";
 import {IUser} from "../Interfaces/User";
 
-const recipesPreviews: RecipePreview[] = [
-    {
-        recipeId: 1,
-        image: "https://placehold.co/600x400",
-        rating: 4,
-        ratingAmount: 10,
-        name: "Classic Spaghetti Carbonara",
-        description: "This classic spaghetti carbonara recipe is a delicious meal that can be made in under 30 minutes. It's the perfect weeknight dinner!"
-    },
-    {
-        recipeId: 2,
-        image: "https://placehold.co/600x400",
-        rating: 5,
-        ratingAmount: 15,
-        name: "Homemade Margherita Pizza",
-        description: "This homemade Margherita pizza recipe is a classic Italian dish that is simple to make and bursting with flavor. The combination of fresh mozzarella, tomatoes, and basil creates a delicious and satisfying meal."
-    },
-    {
-        recipeId: 3,
-        image: "https://placehold.co/600x400",
-        rating: 3,
-        ratingAmount: 8,
-        name: "Chicken Stir-Fry with Vegetables",
-        description: "This chicken stir-fry with vegetables is a quick and easy meal that is perfect for busy weeknights. The combination of tender chicken, crisp vegetables, and a savory sauce makes for a delicious and satisfying dish that the whole family will love."
-    },
-    {
-        recipeId: 4,
-        image: "https://placehold.co/600x400",
-        rating: 4.3,
-        ratingAmount: 12,
-        name: "Creamy Mushroom Risotto",
-        description: "This creamy mushroom risotto recipe is a rich and flavorful dish that is perfect for a special occasion or a cozy night in. The combination of Arborio rice, white wine, mushrooms, and Parmesan cheese creates a luxurious and satisfying meal that will impress your guests."
-    },
-    {
-        recipeId: 5,
-        image: "https://placehold.co/600x400",
-        rating: 5,
-        ratingAmount: 20,
-        name: "Beef Tacos with Salsa Verde",
-        description: "These beef tacos with salsa verde are a delicious and satisfying meal that is perfect for a casual dinner or a festive gathering. The combination of seasoned ground beef, tangy salsa verde, and fresh toppings creates a flavorful and satisfying dish that the whole family will love."
-    },
-    {
-        recipeId: 6,
-        image: "https://placehold.co/600x400",
-        rating: 3,
-        ratingAmount: 7,
-        name: "Vegetarian Pad Thai",
-        description: "This vegetarian pad Thai recipe is a delicious and satisfying meal that is perfect for a meatless dinner. The combination of rice noodles, tofu, vegetables, and a tangy sauce creates a flavorful and satisfying dish that the whole family will love."
+const previewFactory = (recipe: IRecipe): RecipePreview => {
+    return {
+        recipeId: recipe.id,
+        image: recipe.image,
+        name: recipe.name,
+        description: recipe.description,
+        rating: recipe.rating,
+        ratingAmount: recipe.ratings.length
     }
-]
+}
 
-const recipes: Recipe[] = [
+const recipes: IRecipe[] = [
     {
         id: 1,
         name: "Classic Spaghetti Carbonara",
@@ -71,7 +31,13 @@ const recipes: Recipe[] = [
             "Serve hot, garnished with extra grated Parmesan cheese and chopped parsley."
         ],
         cook_time: 189,
-        cuisine_type: "Italian"
+        cuisine_type: "Italian",
+        rating: 4.5,
+        ratings: [
+            {userId: 2, rating: 5, comment: "This was delicious!"},
+            {userId: 3, rating: 3, comment: "Not bad, but could use more flavor."},
+            {userId: 4, rating: 3, comment: "I've had better carbonara."}
+        ]
     },
     {
         id: 2,
@@ -91,7 +57,13 @@ const recipes: Recipe[] = [
             "Remove from oven, let cool for a few minutes, then slice and serve hot."
         ],
         cook_time: 58,
-        cuisine_type: "French"
+        cuisine_type: "French",
+        rating: 4.7,
+        ratings: [
+            {userId: 2, rating: 5, comment: "This was delicious!"},
+            {userId: 3, rating: 4, comment: "Great recipe, will make again."},
+            {userId: 4, rating: 5, comment: "Best pizza I've ever had!"}
+        ]
     },
     {
         id: 3,
@@ -112,7 +84,13 @@ const recipes: Recipe[] = [
             "Serve hot over steamed rice or noodles."
         ],
         cook_time: 211,
-        cuisine_type: "Chinese"
+        cuisine_type: "Chinese",
+        rating: 3.7,
+        ratings: [
+            {userId: 1, rating: 4, comment: "Good recipe, easy to follow."},
+            {userId: 2, rating: 3, comment: "Not bad, but could use more flavor."},
+            {userId: 4, rating: 4, comment: "Delicious and healthy!"}
+        ]
     },
     {
         id: 4,
@@ -133,7 +111,13 @@ const recipes: Recipe[] = [
             "Season with salt and pepper to taste, then serve hot."
         ],
         cook_time: 89,
-        cuisine_type: "Chinese"
+        cuisine_type: "Italian",
+        rating: 4.2,
+        ratings: [
+            {userId: 1, rating: 4, comment: "Delicious and creamy!"},
+            {userId: 3, rating: 4, comment: "Great recipe, will make again."},
+            {userId: 4, rating: 5, comment: "Best risotto I've ever had!"}
+        ]
     },
     {
         id: 5,
@@ -150,7 +134,13 @@ const recipes: Recipe[] = [
             "Serve hot with additional toppings like guacamole, hot sauce, or lime wedges."
         ],
         cook_time: 45,
-        cuisine_type: "Mexican"
+        cuisine_type: "Mexican",
+        rating: 4.8,
+        ratings: [
+            {userId: 1, rating: 5, comment: "So delicious and easy to make!"},
+            {userId: 2, rating: 5, comment: "Best tacos I've ever had."},
+            {userId: 4, rating: 4, comment: "Great recipe, will make again."}
+        ]
     },
     {
         id: 6,
@@ -170,7 +160,13 @@ const recipes: Recipe[] = [
             "Serve hot, garnished with sliced green onions and chopped cilantro."
         ],
         cook_time: 33,
-        cuisine_type: "Thai"
+        cuisine_type: "Thai",
+        rating: 4.1,
+        ratings: [
+            {userId: 1, rating: 4, comment: "Delicious and easy to make!"},
+            {userId: 3, rating: 3, comment: "Not bad, but could use more flavor."},
+            {userId: 4, rating: 4, comment: "Great recipe, will make again."}
+        ]
     }
     ]
 
@@ -182,19 +178,20 @@ const users: IUser[] = [
 ]
 
 export function getRecipePreviews() {
-    return new Promise<RecipePreview[]>((resolve, reject) => {
+    return new Promise<RecipePreview[]>((resolve) => {
+        const recipesPreviews = recipes.map(previewFactory);
         resolve(recipesPreviews);
     });
 }
 
 export function getRecipes() {
-    return new Promise<Recipe[]>((resolve, reject) => {
+    return new Promise<IRecipe[]>((resolve) => {
         resolve(recipes);
     });
 }
 
 export function getRecipe(id: number) {
-    return new Promise<Recipe>((resolve, reject) => {
+    return new Promise<IRecipe>((resolve, reject) => {
         const recipe = recipes.find((recipe) => recipe.id === id);
         if (recipe) {
             resolve(recipe);
@@ -205,14 +202,14 @@ export function getRecipe(id: number) {
 }
 
 export function createRecipe(recipe: Recipe) {
-    return new Promise<Recipe>((resolve, reject) => {
+    return new Promise<Recipe>((resolve) => {
         recipes.push(recipe);
         resolve(recipe);
     });
 }
 
-export function updateRecipe(recipe: Recipe) {
-    return new Promise<Recipe>((resolve, reject) => {
+export function updateRecipe(recipe: IRecipe) {
+    return new Promise<IRecipe>((resolve, reject) => {
         const index = recipes.findIndex((r) => r.id === recipe.id);
         if (index !== -1) {
             recipes[index] = recipe;
@@ -237,7 +234,7 @@ export function deleteRecipe(id: number) {
 
 //very computer intensive function for searching, will lower the requirements if it becomes too much
 export function searchRecipes(query: string) {
-    return new Promise<Recipe[]>((resolve, reject) => {
+    return new Promise<IRecipe[]>((resolve) => {
         const results = recipes.filter((recipe) => {
             //check if the query is empty, if it is return all recipes
             if (query === "") return true;
@@ -253,7 +250,7 @@ export function searchRecipes(query: string) {
 export async function searchRecipePreviews(query: string) {
     const recipes = await searchRecipes(query);
     const ids = recipes.map((recipe) => recipe.id);
-    return recipesPreviews.filter((recipe) => ids.includes(recipe.recipeId));
+    return recipes.map(previewFactory).filter((recipe) => ids.includes(recipe.recipeId));
 }
 
 export function getUser(id: number) {

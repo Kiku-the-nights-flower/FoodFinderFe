@@ -23,7 +23,7 @@ export default function RatingDisplay(props: RatingDisplayProps) {
     return (
         <div className={styles.RatingDisplay}>
             {starArr.map((val, i) => {
-            return <div key={i}
+            return <div className={styles.starDiv} key={i}
             style={{background: `linear-gradient(90deg, #ff643d 
     ${val * 100}%, #bbbac0 ${val * 100}%)`}}>★</div>
 })}

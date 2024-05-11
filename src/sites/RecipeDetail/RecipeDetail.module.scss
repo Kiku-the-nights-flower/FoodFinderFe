@@ -3,10 +3,13 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .IntroContainers {
   display: flex;
+  justify-content: space-between;
 }
 
 .RecipeDetail h1 {
@@ -50,4 +53,19 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .IntroContainers {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .RecipeDetail h1 {
+    font-size: 1.5em;
+  }
+
+  .paragraph {
+    font-size: 100%;
+  }
 }

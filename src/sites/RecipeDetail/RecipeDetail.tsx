@@ -30,9 +30,9 @@ function RecipeDetail() {
 
 
     return (
-        <div className={styles.RecipeDetail}>
+        <div>
             {recipe ? (
-                <div>
+                <div className={styles.RecipeDetail}>
                     <div className={styles.IntroContainers}>
                         <Container>
                             <h1>{recipe.name}</h1>

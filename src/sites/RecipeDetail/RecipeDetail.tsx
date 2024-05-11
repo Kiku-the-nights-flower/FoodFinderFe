@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {Recipe} from "../../Interfaces/Recipe";
 import {getRecipe} from "../../mockApi/MockApi";
 import styles from './RecipeDetail.module.scss';
 import Container from "../../components/Container/Container";
+import {CurrentUserContext} from "../../providers/CurrentUserContext";
 
 
 function RecipeDetail() {
     const recipeId = useParams().id;
-
+    const usercontext = useContext(CurrentUserContext).user;
     const [recipe, setRecipe] = useState<Recipe>();
 
     useEffect(() => {
@@ -55,7 +56,7 @@ function RecipeDetail() {
                             })}
                         </ol>
                     </Container>
-                    <Link to={"edit"}>Edit recipe</Link>
+                    {recipe.ownerId === usercontext.id ? (<Link className={styles.editButton} to={"edit"}>Edit recipe</Link> ) : null}
                 </div>
             ) : (
                 <div>Loading...</div>

@@ -1,17 +1,21 @@
+import {IUser} from "./User";
 
 export interface IRating {
-    userId: number;
+    id: number;
+    user: IUser;
     rating: number;
     comment: string;
 }
 
 export class Rating implements IRating {
-    userId: number;
+    id: number;
+    user: IUser;
     rating: number;
     comment: string;
 
     constructor(rating: IRating) {
-        this.userId = rating.userId;
+        this.id = rating.id;
+        this.user = rating.user;
         this.rating = rating.rating;
         this.comment = rating.comment;
     }

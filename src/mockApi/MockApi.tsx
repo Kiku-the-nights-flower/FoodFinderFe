@@ -34,9 +34,27 @@ const recipes: IRecipe[] = [
         cuisine_type: "Italian",
         rating: 4.5,
         ratings: [
-            {userId: 2, rating: 5, comment: "This was delicious!"},
-            {userId: 3, rating: 3, comment: "Not bad, but could use more flavor."},
-            {userId: 4, rating: 3, comment: "I've had better carbonara."}
+            {
+                id: 1,
+                user: {
+                    id: 2,
+                    username: "Bob"
+                }, rating: 5, comment: "Delicious and easy to make!"
+            },
+            {
+                id: 2,
+                user: {
+                    id: 3,
+                    username: "Charlie"
+                }, rating: 4, comment: "Great recipe, will make again."
+            },
+            {
+                id: 3,
+                user: {
+                    id: 4,
+                    username: "David"
+                }, rating: 4, comment: "Best carbonara I've ever had!"
+            }
         ]
     },
     {
@@ -60,9 +78,27 @@ const recipes: IRecipe[] = [
         cuisine_type: "French",
         rating: 4.7,
         ratings: [
-            {userId: 2, rating: 5, comment: "This was delicious!"},
-            {userId: 3, rating: 4, comment: "Great recipe, will make again."},
-            {userId: 4, rating: 5, comment: "Best pizza I've ever had!"}
+            {
+                id: 3,
+                user: {
+                    id: 2,
+                    username: "Bob"
+                }, rating: 5, comment: "This was delicious!"
+            },
+            {
+                id: 4,
+                user: {
+                    id: 3,
+                    username: "Charlie"
+                }, rating: 5, comment: "Best pizza I've ever had."
+            },
+            {
+                id: 5,
+                user: {
+                    id: 4,
+                    username: "David"
+                }, rating: 4, comment: "Great recipe, will make again."
+            }
         ]
     },
     {
@@ -87,9 +123,27 @@ const recipes: IRecipe[] = [
         cuisine_type: "Chinese",
         rating: 3.7,
         ratings: [
-            {userId: 1, rating: 4, comment: "Good recipe, easy to follow."},
-            {userId: 2, rating: 3, comment: "Not bad, but could use more flavor."},
-            {userId: 4, rating: 4, comment: "Delicious and healthy!"}
+            {
+                id: 6,
+                user: {
+                    id: 1,
+                    username: "Alice"
+                }, rating: 3, comment: "Not bad, but could use more flavor."
+            },
+            {
+                id: 7,
+                user: {
+                    id: 2,
+                    username: "Bob"
+                }, rating: 4, comment: "Great recipe, will make again."
+            },
+            {
+                id: 8,
+                user: {
+                    id: 4,
+                    username: "David"
+                }, rating: 3, comment: "I've had better stir-fry."
+            }
         ]
     },
     {
@@ -114,9 +168,29 @@ const recipes: IRecipe[] = [
         cuisine_type: "Italian",
         rating: 4.2,
         ratings: [
-            {userId: 1, rating: 4, comment: "Delicious and creamy!"},
-            {userId: 3, rating: 4, comment: "Great recipe, will make again."},
-            {userId: 4, rating: 5, comment: "Best risotto I've ever had!"}
+            {
+                id: 9,
+                user: {
+                    id: 1,
+                    username: "Alice"
+                }, rating: 4, comment: "Delicious and creamy!"
+            },
+            {
+                id: 10,
+                user: {
+                    id: 3,
+                    username: "Charlie"
+
+                }, rating: 4, comment: "Great recipe, will make again."
+            },
+            {
+                id: 11,
+                user: {
+                    id: 4,
+                    username: "David"
+
+                }, rating: 5, comment: "Best risotto I've ever had!"
+            }
         ]
     },
     {
@@ -137,9 +211,28 @@ const recipes: IRecipe[] = [
         cuisine_type: "Mexican",
         rating: 4.8,
         ratings: [
-            {userId: 1, rating: 5, comment: "So delicious and easy to make!"},
-            {userId: 2, rating: 5, comment: "Best tacos I've ever had."},
-            {userId: 4, rating: 4, comment: "Great recipe, will make again."}
+            {
+                id: 12,
+                user: {
+                    id: 1,
+                    username: "Alice"
+                }, rating: 5, comment: "So delicious and easy to make!"
+            },
+            {
+                id: 13,
+                user: {
+                    id: 2,
+                    username: "Bob"
+
+                }, rating: 5, comment: "Best tacos I've ever had."
+            },
+            {
+                id: 14,
+                user: {
+                    id: 4,
+                    username: "David"
+                }, rating: 4, comment: "Great recipe, will make again."
+            }
         ]
     },
     {
@@ -163,18 +256,37 @@ const recipes: IRecipe[] = [
         cuisine_type: "Thai",
         rating: 4.1,
         ratings: [
-            {userId: 1, rating: 4, comment: "Delicious and easy to make!"},
-            {userId: 3, rating: 3, comment: "Not bad, but could use more flavor."},
-            {userId: 4, rating: 4, comment: "Great recipe, will make again."}
+            {
+                id: 15,
+                user: {
+                    id: 1,
+                    username: "Alice"
+                }, rating: 4, comment: "Delicious and easy to make!"
+            },
+            {
+                id: 16,
+                user: {
+                    id: 4,
+                    username: "David"
+                }, rating: 3, comment: "Not bad, but could use more flavor."
+            },
+            {
+                id: 17,
+                user: {
+                    id: 3,
+                    username: "Charlie"
+                }, rating: 4, comment: "Great recipe, will make again."
+            }
         ]
     }
-    ]
+]
 
 const users: IUser[] = [
     {id: -1, username: "Guest"},
     {id: 1, username: "Alice"},
     {id: 2, username: "Bob"},
-    {id: 3, username: "Charlie"}
+    {id: 3, username: "Charlie"},
+    {id: 4, username: "David"}
 ]
 
 export function getRecipePreviews() {

@@ -5,6 +5,7 @@ import {getRecipe} from "../../mockApi/MockApi";
 import styles from './RecipeDetail.module.scss';
 import Container from "../../components/Container/Container";
 import {CurrentUserContext} from "../../providers/CurrentUserContext";
+import RatingTile from "../../components/RatingTile/RatingTile";
 
 
 function RecipeDetail() {
@@ -35,9 +36,9 @@ function RecipeDetail() {
                     <div className={styles.IntroContainers}>
                         <Container>
                             <h1>{recipe.name}</h1>
-                            <p>{recipe.description}</p>
+                            <p className={styles.paragraph}>{recipe.description}</p>
                             <h2>Cook Time</h2>
-                            <p>{recipe.cook_time} minutes</p>
+                            <p className={styles.paragraph}>{recipe.cook_time} minutes</p>
                         </Container>
                         <Container>
                             <h2>Ingredients</h2>
@@ -55,6 +56,16 @@ function RecipeDetail() {
                                 return <li key={index}>{step}</li>
                             })}
                         </ol>
+                    </Container>
+                    <Container>
+                        <h2>Ratings</h2>
+                        <div className={styles.ratingContainer}>
+                            {recipe.ratings.map(r=> {
+                                return (
+                                    <RatingTile rating={r} key={r.id}/>
+                                )
+                            })}
+                        </div>
                     </Container>
                     {recipe.ownerId === usercontext.id ? (<Link className={styles.editButton} to={"edit"}>Edit recipe</Link> ) : null}
                 </div>
